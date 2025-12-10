@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="actualite.css" />
+    <link
+      rel="stylesheet"
+      href="../../bootstrap-5.3.8-dist/css/bootstrap.css"
+    />
+
+    <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="background-color: whitesmoke">
+    <nav class="navbar navbar-expand-lg navbar-light glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+          <img src="../../../img/gazela-logo.png" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bord.html">Tableau de bord</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                >Jeunes</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="jeune/jeune.html"
+                    >Programme 1</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../actualite.html">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Ressources</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Bénévolat</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="text-center container-fluid main" style="margin-top: 70px">
+      <h1
+        class="mt-5"
+        style="
+          font-size: 55px;
+          font-weight: bolder;
+          font-family: Arial, Helvetica, sans-serif;
+          color: rgb(35, 23, 23);
+        "
+      >
+        Actualités & Programmes
+      </h1>
+      <p
+        class="mb-5"
+        style="
+          color: rgb(75, 59, 59);
+          font-size: 20px;
+          font-family: Arial, Helvetica, sans-serif;
+        "
+      >
+        Restez informé des dernières nouvelles, programmes et opportunités de
+        <br />
+        l'association Gazela
+      </p>
+    </main>
+    <nav class="container navigation-info">
+      <a href="actualite.html" class="activeNow">📰 Actualités</a>
+      <a href="to-act/programme.html">📆 Programme</a>
+      <a href="to-act/info.html">💡Infos Jeunes</a>
+    </nav>
+    <!-- Ajouter une actus -->
+    <div class="container mt-5">
+      <button class="btn btn-outline-success mb-3" id="addActuBtn">
+        Ajouter une actualité
+      </button>
+
+      <!-- Formulaire caché -->
+      <div
+        id="actuForm"
+        class="actu-card hidden"
+        style="flex-direction: column"
+      >
+        <div class="actu-image">
+          <img id="previewImage" src="..." alt="Preview" />
+        </div>
+        <div class="actu-content">
+          <input
+            type="file"
+            id="imageInput"
+            class="form-control mb-2"
+            accept="image/*"
+          />
+          <input
+            type="text"
+            id="titleInput"
+            class="form-control mb-2"
+            placeholder="Titre de l’actualité"
+          />
+          <textarea
+            id="descInput"
+            class="form-control mb-2"
+            rows="3"
+            placeholder="Description…"
+          ></textarea>
+          <button class="btn btn-success" id="publishActu">
+            Publier l’actualité
+          </button>
+        </div>
+      </div>
+
+      <section class="path mt-3"></section>
+    </div>
+
+    <!-- Script principal avec Firebase intégré -->
+    <script type="module">
+      // 1️⃣ Import Firebase
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        setDoc,
+        onSnapshot,
+        updateDoc,
+        arrayUnion,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+      import {
+        getStorage,
+        ref,
+        uploadBytes,
+        getDownloadURL,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+      // 2️⃣ Config Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBMXFG1hRdZgottPlkTUTT0KacyXD70TA",
+        authDomain: "gazela-31196.firebaseapp.com",
+        databaseURL: "https://gazela-31196-default-rtdb.firebaseio.com",
+        projectId: "gazela-31196",
+        storageBucket: "gazela-31196.appspot.com",
+        messagingSenderId: "684160987114",
+        appId: "1:684160987114:web:36bc996595b5bdc4a60c93",
+        measurementId: "G-1S46PN787R",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const storage = getStorage(app);
+      const actuCollection = collection(db, "actualites");
+
+      // 3️⃣ Elements HTML
+      const addBtn = document.getElementById("addActuBtn");
+      const formCard = document.getElementById("actuForm");
+      const pathSection = document.querySelector(".path");
+      const imageInput = formCard.querySelector("#imageInput");
+      const previewImage = formCard.querySelector("#previewImage");
+      const titleInput = formCard.querySelector("#titleInput");
+      const descInput = formCard.querySelector("#descInput");
+      const publishBtn = formCard.querySelector("#publishActu");
+
+      // 4️⃣ Afficher / cacher formulaire
+      addBtn.addEventListener("click", () =>
+        formCard.classList.toggle("hidden")
+      );
+
+      imageInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) previewImage.src = URL.createObjectURL(file);
+      });
+
+      // 5️⃣ Publier une actu
+      publishBtn.addEventListener("click", async () => {
+        const title = titleInput.value.trim();
+        const desc = descInput.value.trim();
+        const file = imageInput.files[0];
+
+        if (!title || !desc) return alert("Remplis tous les champs !");
+
+        let imgUrl = "../../img/placeholder.png"; // par défaut
+
+        // 📌 Upload de l’image si présente
+        if (file) {
+          const storageRef = ref(
+            storage,
+            `actualites/${Date.now()}-${file.name}`
+          );
+          await uploadBytes(storageRef, file);
+          imgUrl = await getDownloadURL(storageRef);
+        }
+
+        // 📌 Enregistrer dans Firestore (créé la collection si elle n'existe pas)
+        const newDoc = doc(actuCollection);
+        await setDoc(newDoc, {
+          title,
+          desc,
+          img: imgUrl,
+          likes: 0,
+          comments: [],
+          createdAt: serverTimestamp(),
+        });
+
+        // Reset formulaire
+        titleInput.value = "";
+        descInput.value = "";
+        imageInput.value = "";
+        previewImage.src = "../../img/placeholder.png";
+        formCard.classList.add("hidden");
+      });
+
+      // 6️⃣ Fonction pour créer la carte actu
+      function renderActu(docSnap) {
+        const data = docSnap.data();
+        const card = document.createElement("div");
+        card.classList.add("actu-card");
+        card.id = docSnap.id;
+
+        card.innerHTML = `
+					<div class="actu-image"><img src="${data.img}" alt="Actu"/></div>
+		
+					<div class="actu-content">
+						<p class="actu-meta">association gazela • aujourd’hui • 1 min de lecture</p>
+		
+						<h2 class="actu-title">${data.title}</h2>
+						<p class="actu-desc">${data.desc}</p>
+		
+						<div class="actu-footer">
+							<span class="views">0 vues</span>
+							<span class="comment-count">${data.comments.length} commentaire${
+          data.comments.length > 1 ? "s" : ""
+        }</span>
+		
+							<button class="heart-btn likeBtn futuristic-heart">❤️</button>
+							<span class="likeCount">${data.likes}</span>
+						</div>
+		
+						<div class="comment-section">
+							<input type="text" class="commentInput" placeholder="Écrire un commentaire...">
+							<button class="submitComment btn btn-primary btn-sm">Publier</button>
+						</div>
+		
+						<div class="commentsList"></div>
+					</div>
+				`;
+
+        pathSection.prepend(card);
+        activateCard(card, docSnap.id);
+
+        // 🔄 Mise à jour en temps réel de la carte
+        const docRef = doc(db, "actualites", docSnap.id);
+        onSnapshot(docRef, (snapshot) => {
+          const d = snapshot.data();
+          card.querySelector(".likeCount").textContent = d.likes;
+          card.querySelector(".comment-count").textContent = `${
+            d.comments.length
+          } commentaire${d.comments.length > 1 ? "s" : ""}`;
+
+          // Actualiser commentaires
+          const commentsList = card.querySelector(".commentsList");
+          commentsList.innerHTML = "";
+          d.comments.forEach((comment) => {
+            const div = document.createElement("div");
+            div.classList.add("comment-item");
+            div.textContent = comment;
+            commentsList.appendChild(div);
+          });
+        });
+      }
+
+      // 7️⃣ Gestion Like + Commentaire
+      function activateCard(card, id) {
+        const likeBtn = card.querySelector(".likeBtn");
+        const commentInput = card.querySelector(".commentInput");
+        const submitComment = card.querySelector(".submitComment");
+
+        // ❤️ Like
+        likeBtn.addEventListener("click", async () => {
+          const docRef = doc(db, "actualites", id);
+          let currentLikes = parseInt(
+            card.querySelector(".likeCount").textContent
+          );
+
+          if (likeBtn.classList.contains("active")) {
+            likeBtn.classList.remove("active");
+            currentLikes--;
+          } else {
+            likeBtn.classList.add("active");
+            currentLikes++;
+          }
+
+          await updateDoc(docRef, { likes: currentLikes });
+        });
+
+        // 💬 Commentaires
+        submitComment.addEventListener("click", async () => {
+          const text = commentInput.value.trim();
+          if (!text) return;
+
+          const docRef = doc(db, "actualites", id);
+          await updateDoc(docRef, { comments: arrayUnion(text) });
+
+          commentInput.value = "";
+        });
+      }
+
+      // 8️⃣ Écoute temps réel globale de la collection
+      onSnapshot(actuCollection, (snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          if (change.type === "added") {
+            renderActu(change.doc);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

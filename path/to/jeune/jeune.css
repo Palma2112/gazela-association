@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.jeune-card{
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 10px ;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    
+    transition: 800ms;
+}
+.badge-success {
+    background: #28a745;
+}
+.badge-light{
+    background: #f8f9fa;
+}
+.text-gr{
+    color: #677482;
+    font-weight: light;
+}
+.glass-nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.logo {
+  height: 60px;
+}
+nav{
+    font-family: "Poppins", sans-serif;
+
+}
+/* --- SIDEBAR PURE HTML --- */
+      

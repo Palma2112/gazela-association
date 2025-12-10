@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter / Modifier un jeune</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  </head>
+  <body class="p-3">
+    <h2>Ajouter / Modifier un jeune</h2>
+    <div id="react-root"></div>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      // 🔹 Config Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBMXFG1hRdZgottPlkTUTT0KacyXD70TA",
+        authDomain: "gazela-31196.firebaseapp.com",
+        projectId: "gazela-31196",
+        storageBucket: "gazela-31196.firebasestorage.app",
+        messagingSenderId: "684160987114",
+        appId: "1:684160987114:web:36bc996595b5bdc4a60c93",
+      };
+
+      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+
+      function App() {
+        const [form, setForm] = useState({
+          nom: "",
+          age: "",
+          telephone: "",
+          programme: "",
+          statut: "actif",
+          dernierePresence: "",
+          vague: "Vague 1",
+          description: "",
+        });
+        const [editID, setEditID] = useState(null);
+        const [loading, setLoading] = useState(false);
+
+        // 🔹 Charger données si édition
+        useEffect(() => {
+          const id = localStorage.getItem("editID");
+          if (id) {
+            setEditID(id);
+            localStorage.removeItem("editID");
+            setLoading(true);
+            db.collection("jeunes")
+              .doc(id)
+              .get()
+              .then((doc) => {
+                if (doc.exists) {
+                  const data = doc.data();
+                  setForm({
+                    nom: data.nom || "",
+                    age: data.age || "",
+                    telephone: data.telephone || "",
+                    programme: data.programme || "",
+                    statut: data.statut || "actif",
+                    dernierePresence: data.dernierePresence || "",
+                    vague: data.vague || "Vague 1",
+                    description: data.description || "",
+                  });
+                }
+              })
+              .catch((err) => {
+                console.error("Erreur de chargement:", err);
+                alert("Impossible de charger le jeune.");
+              })
+              .finally(() => setLoading(false));
+          }
+        }, []);
+
+        function updateField(e) {
+          setForm({ ...form, [e.target.name]: e.target.value });
+        }
+
+        function handleSubmit(e) {
+          e.preventDefault();
+          setLoading(true);
+          const payload = { ...form };
+          if (!payload.dernierePresence) {
+            payload.dernierePresence = new Date().toISOString().split("T")[0];
+          }
+
+          const action = editID
+            ? db.collection("jeunes").doc(editID).update(payload)
+            : db.collection("jeunes").add(payload);
+
+          action
+            .then(() => {
+              alert("Jeune enregistré !");
+              window.location.href = "jeune.html";
+            })
+            .catch((err) => {
+              console.error("Erreur:", err);
+              alert("Erreur lors de l'enregistrement.");
+            })
+            .finally(() => setLoading(false));
+        }
+
+        return (
+          <form
+            className="card p-4 shadow"
+            style={{ maxWidth: "500px" }}
+            onSubmit={handleSubmit}
+          >
+            {loading && <div className="alert alert-info">Chargement...</div>}
+
+            <div className="mb-3">
+              <label className="form-label">Nom</label>
+              <input
+                name="nom"
+                className="form-control"
+                value={form.nom}
+                onChange={updateField}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Âge</label>
+              <input
+                type="number"
+                name="age"
+                className="form-control"
+                value={form.age}
+                onChange={updateField}
+                min="0"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Téléphone</label>
+              <input
+                type="tel"
+                name="telephone"
+                className="form-control"
+                value={form.telephone}
+                onChange={updateField}
+                pattern="^[0-9]{7,10}$"
+                placeholder="Ex: 0341234567"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Programme</label>
+              <input
+                name="programme"
+                className="form-control"
+                value={form.programme}
+                onChange={updateField}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Statut</label>
+              <select
+                name="statut"
+                className="form-select"
+                value={form.statut}
+                onChange={updateField}
+              >
+                <option value="actif">Actif</option>
+                <option value="inactif">Inactif</option>
+                <option value="suspendu">Suspendu</option>
+              </select>
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Dernière présence</label>
+              <input
+                type="date"
+                name="dernierePresence"
+                className="form-control"
+                value={form.dernierePresence}
+                onChange={updateField}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Vague</label>
+              <select
+                name="vague"
+                className="form-select"
+                value={form.vague}
+                onChange={updateField}
+              >
+                <option value="Vague 1">Vague 1</option>
+                <option value="Vague 2">Vague 2</option>
+                <option value="Vague 3">Vague 3</option>
+              </select>
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Description</label>
+              <textarea
+                name="description"
+                className="form-control"
+                value={form.description}
+                onChange={updateField}
+                placeholder="Décris le jeune..."
+                rows="3"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              disabled={loading}
+            >
+              {editID ? "Mettre à jour" : "Enregistrer"}
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-secondary w-100 mt-2"
+              onClick={() => (window.location.href = "jeune.html")}
+            >
+              Annuler
+            </button>
+          </form>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("react-root"));
+    </script>
+  </body>
+</html>

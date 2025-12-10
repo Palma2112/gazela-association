@@ -1,0 +1,122 @@
+/* GENERAL */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f7f7f7;
+}
+
+/* NAVBAR GLASS */
+.glass-nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.logo {
+  height: 60px;
+}
+
+/* HERO */
+.hero-section {
+  height: 80vh;
+  background: url("img/hero-gazela.png") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  color: white;
+  max-width: 700px;
+  animation: fadeUp 1.3s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* TITLES */
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #6f6f6f;
+  max-width: 700px;
+  margin: 10px auto;
+}
+
+/* MISSION CARDS */
+.mission-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: 0.3s;
+  height: 280px;
+}
+
+.mission-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mission-icon {
+  height: 70px;
+  margin-bottom: 15px;
+}
+
+/* STATS */
+.stats-section {
+  background: white;
+  padding: 60px 0;
+  margin-top: 40px;
+}
+
+.stat-box h3 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+/* JOIN SECTION */
+.join-section {
+  padding: 60px 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #eaeaea;
+  padding: 40px 0;
+}
+
+.footer-logo {
+  height: 70px;
+}
+.stats-section {
+  padding: 60px 0;
+}
+
+.stat-box h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c7a4b;
+}
+
+.stat-box p {
+  font-size: 18px;
+  color: #555;
+}

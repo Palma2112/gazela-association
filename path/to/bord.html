@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bord.css" />
+    <link
+      rel="stylesheet"
+      href="../../bootstrap-5.3.8-dist/css/bootstrap.css"
+    />
+    <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+          <img src="../../img/gazela-logo.png" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Tableau de bord</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                >Jeunes</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="jeune/jeune.html"
+                    >Programme 1</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="actualite.html">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Ressources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="benevolat.html">Bénévolat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main style="margin-top: 80px">
+      <h1 class="text-center pt-5">
+        Bienvenue sur le tableau de bord de
+        <span
+          style="font-family: 'Alfa Slab One', sans-serif; color: rgb(0, 83, 0)"
+          >Gazela</span
+        >
+      </h1>
+      <p class="text-center" style="color: rgb(138, 74, 74)">
+        Vue d'ensemble des activités et statistiques
+      </p>
+    </main>
+    <div class="container">
+      <section class="container row mx-auto">
+        <div
+          class="stat d-flex align-items-center justify-content-around p-4 col-xl-3 col-md-6 col-sm-12"
+        >
+          <div>
+            <p>Jeunes inscrits</p>
+            <span id="totalJeunes" style="font-size: 24px">0</span>
+          </div>
+          <div class="div">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              fill="currentColor"
+              class="bi bi-person-vcard"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"
+              />
+              <path
+                d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="stat d-flex align-items-center justify-content-around p-4 col-xl-3 col-md-6 col-sm-12"
+        >
+          <div>
+            <p>Activité ce mois</p>
+            <h3 id="activity-count">0</h3>
+          </div>
+
+          <div class="div">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              fill="currentColor"
+              class="bi bi-calendar2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"
+              />
+              <path
+                d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="stat d-flex align-items-center justify-content-around p-4 col-xl-3 col-md-6 col-sm-12"
+        >
+          <div>
+            <p>Taux de présence</p>
+            <h3 id="tauxPresence">0%</h3>
+          </div>
+          <div class="div">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              fill="currentColor"
+              class="bi bi-activity"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="stat d-flex align-items-center justify-content-around p-4 col-xl-3 col-md-6 col-sm-12"
+        >
+          <div>
+            <p>Dossier actifs</p>
+            <span id="nombreActifs" style="font-size: 24px">0</span>
+          </div>
+          <div class="div">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              fill="currentColor"
+              class="bi bi-file-earmark-text"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"
+              />
+              <path
+                d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </div>
+    <main class="row g-4 container mx-auto">
+      <section class="box-presence mt-5 col-xl-9">
+        <div class="hyud">
+          <h4 class="m-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-clock"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+              />
+              <path
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+              />
+            </svg>
+            Présence des jeunes aujourd'hui
+          </h4>
+          <button class="btn btn-primary" id="prendrePresenceBtn">
+            Prendre la présence
+          </button>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Activité</th>
+              <th scope="col">Heure d'arrivée</th>
+              <th scope="col">Statut</th>
+            </tr>
+          </thead>
+          <tbody id="tablePresence"></tbody>
+        </table>
+      </section>
+
+      <section id="prochainesBox" class="box mt-5 col-xl-3">
+        <h4>Prochaines activités</h4>
+        <div id="prochainesList"></div>
+
+        <button id="openCalendarBtn" class="btn btn-primary mt-3">
+          Ajouter une activité
+        </button>
+
+        <div id="calendar-wrapper" style="display: none; margin-top: 20px">
+          <input type="date" id="activityDate" class="form-control mt-3" />
+          <input
+            type="text"
+            id="activityName"
+            class="form-control mt-3"
+            placeholder="Nom de l’activité"
+          />
+          <input
+            type="number"
+            id="participants"
+            class="form-control mt-3"
+            placeholder="Nombre de participants"
+          />
+          <button id="saveActivityBtn" class="btn btn-success mt-3">
+            Enregistrer
+          </button>
+        </div>
+      </section>
+    </main>
+    <section class="container mx-auto row mt-5">
+      <div class="left col-xl-6 col-lg-6 col-md-12 mb-5">
+        <h4 class="text-center">Activité récentes</h4>
+        <div id="recentActivities"></div>
+      </div>
+      <div class="right col-xl-6 col-lg-6 col-md-12 text-center">
+        <h4>Taux de présences</h4>
+        <div class="d-flex justify-content-between align-items-center p-2 row">
+          <div class="gch col-3">
+            <p>Lundi</p>
+          </div>
+          <div class="drt col-9">
+            <div class="progress">
+              <div id="bar-lundi" class="progress-bar" role="progressbar">
+                0%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-2 row">
+          <div class="gch col-3">
+            <p>Mardi</p>
+          </div>
+          <div class="drt col-9">
+            <div class="progress">
+              <div id="bar-mardi" class="progress-bar" role="progressbar">
+                0%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-2 row">
+          <div class="gch col-3">
+            <p>Mercredi</p>
+          </div>
+          <div class="drt col-9">
+            <div class="progress">
+              <div id="bar-mercredi" class="progress-bar" role="progressbar">
+                0%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-2 row">
+          <div class="gch col-3">
+            <p>Jeudi</p>
+          </div>
+          <div class="drt col-9">
+            <div class="progress">
+              <div id="bar-jeudi" class="progress-bar" role="progressbar">
+                0%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-2 row">
+          <div class="gch col-3">
+            <p>Vendredi</p>
+          </div>
+          <div class="drt col-9">
+            <div class="progress">
+              <div id="bar-vendredi" class="progress-bar" role="progressbar">
+                0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="resetBtn" class="btn btn-danger">
+        Réinitialiser la presence
+      </button>
+
+      <button id="terminerJourneeBtn" class="btn btn-danger mt-3">
+        Terminer la journée
+      </button>
+    </section>
+    <footer>
+      <div class="row" style="background-color: rgb(227, 227, 227)">
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <img
+            src="../../img/gazela-logo.web"
+            alt="logo"
+            style="height: 80px; width: auto"
+          />
+          <p>
+            Promotion et développement de l'environnement social des enfants et
+            jeunes à Madagascar
+          </p>
+        </div>
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <h4>Contact</h4>
+          <p>
+            Email: contact@gazela.mg <br />
+            Tél: +261 XX XX XXX XX
+          </p>
+        </div>
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <h4>Suivez-nous</h4>
+          <p>Facebook • Instagram • LinkedIn</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        doc,
+        setDoc,
+        updateDoc,
+        onSnapshot,
+        addDoc,
+        query,
+        orderBy,
+        getDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+      // ---------------- CONFIG FIREBASE ----------------
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBMXFG1hRdZgottPlkTUTT0KacyXD70TA",
+        authDomain: "gazela-31196.firebaseapp.com",
+        projectId: "gazela-31196",
+        storageBucket: "gazela-31196.firebasestorage.app",
+        messagingSenderId: "684160987114",
+        appId: "1:684160987114:web:36bc996595b5bdc4a60c93",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      window.db = db;
+
+      // ---------------- VARIABLES ----------------
+      let jeunes = [];
+      let presenceData = {}; // contiendra les documents presences par id (ex: 'lundi')
+      let currentEditId = null;
+      const days = [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+      ];
+      const todayName = days[new Date().getDay()];
+      const todayId = todayName; // id du doc Firestore pour la journée courante (string)
+
+      // ---------------- SELECTEURS ----------------
+      const tbody = document.getElementById("tablePresence");
+      const tauxPresenceEl = document.getElementById("tauxPresence");
+      const btnPrendre = document.getElementById("prendrePresenceBtn");
+      const btnReset = document.getElementById("resetBtn");
+      const btnTerminer = document.getElementById("terminerJourneeBtn");
+      const calendarWrapper = document.getElementById("calendar-wrapper");
+      const openCalendarBtn = document.getElementById("openCalendarBtn");
+      const saveBtn = document.getElementById("saveActivityBtn");
+      const prochainesList = document.getElementById("prochainesList");
+      const activityCountEl = document.getElementById("activity-count");
+      const recentContainer = document.querySelector(".left");
+      const totalJeunesEl = document.getElementById("totalJeunes");
+      const nombreActifsEl = document.getElementById("nombreActifs");
+
+      // ---------------- UTILITAIRES ----------------
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      // ---------------- CHARGER JEUNES ----------------
+      async function loadJeunes() {
+        try {
+          const snap = await getDocs(collection(db, "jeunes"));
+
+          // Garder seulement Vague 3
+          jeunes = snap.docs
+            .map((d) => ({ id: d.id, ...d.data() }))
+            .filter((j) => j.vague === "Vague 1");
+
+          updateNombreActifs();
+          afficherListeSansPresence();
+        } catch (err) {
+          console.error("Erreur loadJeunes:", err);
+        }
+      }
+
+      function afficherListeSansPresence() {
+        tbody.innerHTML = "";
+        jeunes.forEach((j) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+				  <td>${escapeHtml(j.nom || "")}</td>
+				  <td>${escapeHtml(j.programme || "-")}</td>
+				  <td>-</td>
+				  <td>-</td>
+				`;
+          tbody.appendChild(row);
+        });
+        if (totalJeunesEl)
+          totalJeunesEl.textContent = String(jeunes.length || 0);
+      }
+
+      // ---------------- PRESENCE (création et toggle) ----------------
+      // Crée le document du jour si absent (closed:false par défaut)
+      async function createPresenceDocIfMissing() {
+        const docRef = doc(db, "presences", todayId);
+        const snap = await getDoc(docRef);
+        if (!snap.exists()) {
+          const docPayload = {
+            jeunes: jeunes.map((j) => ({
+              nom: j.nom,
+              activite: j.programme || "-",
+              statut: "",
+              heure: "",
+            })),
+            present: 0,
+            total: jeunes.length,
+            createdAt: serverTimestamp(),
+            closed: false,
+          };
+          await setDoc(docRef, docPayload);
+        }
+        // la mise à jour sera prise en compte via onSnapshot global ci-dessous
+      }
+
+      async function prendrePresence() {
+        try {
+          if (jeunes.length === 0) {
+            alert("Aucun jeune à lister.");
+            return;
+          }
+          const docRef = doc(db, "presences", todayId);
+          const snap = await getDoc(docRef);
+          if (snap.exists() && snap.data().closed) {
+            alert(
+              "La présence pour aujourd'hui est déjà finalisée; impossible de la démarrer."
+            );
+            return;
+          }
+          await createPresenceDocIfMissing();
+          // updateTable sera déclenché par onSnapshot, mais on peut forcer localement
+        } catch (err) {
+          console.error("Erreur prendrePresence:", err);
+          alert("Impossible de démarrer la présence aujourd'hui.");
+        }
+      }
+
+      // bascule present/absent et enregistre en temps réel
+      async function togglePresence(index, choix) {
+        try {
+          const docRef = doc(db, "presences", todayId);
+          const snap = await getDoc(docRef);
+          if (!snap.exists()) return;
+
+          const docData = snap.data();
+          if (docData.closed) {
+            alert("La journée est finalisée — modifications interdites.");
+            return;
+          }
+
+          const jeunesArr = Array.isArray(docData.jeunes)
+            ? [...docData.jeunes]
+            : [];
+          const jeune = jeunesArr[index];
+          if (!jeune) return;
+
+          let presentCount = Number(docData.present || 0);
+
+          if (choix === "present") {
+            if (jeune.statut !== "present") presentCount++;
+            jeune.statut = "present";
+          } else {
+            if (jeune.statut === "present")
+              presentCount = Math.max(0, presentCount - 1);
+            jeune.statut = "absent";
+          }
+          jeune.heure = new Date().toLocaleTimeString();
+
+          await updateDoc(docRef, {
+            jeunes: jeunesArr,
+            present: presentCount,
+            lastUpdatedAt: serverTimestamp(),
+          });
+          // onSnapshot mettra à jour l'UI
+        } catch (err) {
+          console.error("Erreur togglePresence:", err);
+        }
+      }
+
+      // ---------------- AFFICHAGE TABLEAU ----------------
+      function updateTable() {
+        tbody.innerHTML = "";
+        const todayDoc = presenceData[todayId];
+        if (!todayDoc || !Array.isArray(todayDoc.jeunes)) {
+          // si pas de doc pour aujourd'hui, afficher la liste sans statut
+          afficherListeSansPresence();
+          return;
+        }
+
+        todayDoc.jeunes.forEach((j, index) => {
+          const row = document.createElement("tr");
+          const tdNom = document.createElement("td");
+          tdNom.textContent = j.nom || "-";
+          const tdAct = document.createElement("td");
+          tdAct.textContent = j.activite || "-";
+          const tdHeure = document.createElement("td");
+          tdHeure.textContent = j.heure || "-";
+          const tdStatut = document.createElement("td");
+
+          if (j.statut === "present") {
+            tdStatut.innerHTML = `<span class="badge bg-success">Présent</span>`;
+          } else if (j.statut === "absent") {
+            tdStatut.innerHTML = `<span class="badge bg-danger">Absent</span>`;
+          } else {
+            // si pas encore de statut, afficher contrôles sauf si finalisé
+            if (todayDoc.closed) {
+              tdStatut.innerHTML = `<span class="badge bg-secondary">Non marqué (finalisé)</span>`;
+            } else {
+              const presentEmoji = document.createElement("span");
+              presentEmoji.textContent = "✅";
+              presentEmoji.style.fontSize = "1.2rem";
+              presentEmoji.style.cursor = "pointer";
+              presentEmoji.title = "Marquer présent";
+              presentEmoji.addEventListener("click", () =>
+                togglePresence(index, "present")
+              );
+
+              const absentEmoji = document.createElement("span");
+              absentEmoji.textContent = " ❌";
+              absentEmoji.style.fontSize = "1.2rem";
+              absentEmoji.style.cursor = "pointer";
+              absentEmoji.title = "Marquer absent";
+              absentEmoji.addEventListener("click", () =>
+                togglePresence(index, "absent")
+              );
+
+              tdStatut.appendChild(presentEmoji);
+              tdStatut.appendChild(absentEmoji);
+            }
+          }
+
+          row.appendChild(tdNom);
+          row.appendChild(tdAct);
+          row.appendChild(tdHeure);
+          row.appendChild(tdStatut);
+          tbody.appendChild(row);
+        });
+
+        // désactiver/activer bouton Prendre selon état closed
+        if (btnPrendre) {
+          const todayDocLocal = presenceData[todayId];
+          btnPrendre.disabled = todayDocLocal ? !!todayDocLocal.closed : false;
+        }
+      }
+
+      // ---------------- TAUX & BARRES ----------------
+      function updateTaux() {
+        // Met à jour les barres journalières (lundi..vendredi)
+        const weekdays = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
+        let totalPresent = 0,
+          totalJeunesAll = 0;
+        weekdays.forEach((day) => {
+          const dayDoc = presenceData[day];
+          const bar = document.getElementById("bar-" + day);
+          if (
+            bar &&
+            dayDoc &&
+            typeof dayDoc.present === "number" &&
+            dayDoc.total
+          ) {
+            const ratio = Math.round((dayDoc.present / dayDoc.total) * 100);
+            bar.style.width = ratio + "%";
+            bar.textContent = ratio + "%";
+            bar.classList.remove("bg-success", "bg-warning", "bg-danger");
+            if (ratio >= 75) bar.classList.add("bg-success");
+            else if (ratio >= 40) bar.classList.add("bg-warning");
+            else bar.classList.add("bg-danger");
+            totalPresent += dayDoc.present;
+            totalJeunesAll += dayDoc.total;
+          } else if (bar) {
+            bar.style.width = "0%";
+            bar.textContent = "0%";
+            bar.classList.remove("bg-success", "bg-warning", "bg-danger");
+            bar.classList.add("bg-danger");
+          }
+        });
+
+        const tauxGlobal = totalJeunesAll
+          ? Math.round((totalPresent / totalJeunesAll) * 100)
+          : 0;
+        if (tauxPresenceEl) tauxPresenceEl.textContent = tauxGlobal + "%";
+        const barGlobal = document.getElementById("progressBarGlobal");
+        if (barGlobal) {
+          barGlobal.style.width = tauxGlobal + "%";
+          barGlobal.textContent = tauxGlobal + "%";
+        }
+      }
+
+      function updateNombreActifs() {
+        const actifs = jeunes.filter((j) => j.statut === "actif").length;
+        if (nombreActifsEl) nombreActifsEl.textContent = actifs;
+        if (totalJeunesEl)
+          totalJeunesEl.textContent = String(jeunes.length || 0);
+      }
+
+      // ---------------- RESET & TERMINER ----------------
+      async function onResetClick() {
+        if (
+          !confirm("Voulez-vous vraiment réinitialiser la présence du jour ?")
+        )
+          return;
+        const docRef = doc(db, "presences", todayId);
+        const snap = await getDoc(docRef);
+        if (!snap.exists()) return;
+
+        const data = snap.data();
+        if (data.closed) {
+          alert(
+            "La présence du jour est finalisée et ne peut pas être réinitialisée."
+          );
+          return;
+        }
+
+        const resetJeunes = (data.jeunes || []).map((j) => ({
+          ...j,
+          statut: "",
+          heure: "",
+        }));
+        try {
+          await updateDoc(docRef, {
+            jeunes: resetJeunes,
+            present: 0,
+            lastResetAt: serverTimestamp(),
+          });
+          // onSnapshot suivra et mettra à jour l'UI automatiquement
+        } catch (err) {
+          console.error("Erreur reset:", err);
+          alert("Erreur lors de la réinitialisation.");
+        }
+      }
+
+      async function onTerminerClick() {
+        const docRef = doc(db, "presences", todayId);
+        const snap = await getDoc(docRef);
+        if (!snap.exists()) {
+          alert("Aucun enregistrement de présence pour aujourd'hui.");
+          return;
+        }
+        const data = snap.data();
+        if (data.closed) {
+          alert("La journée est déjà terminée.");
+          return;
+        }
+
+        // calcul final du nombre présent (garanti par doc.present si toutes les actions ont mis à jour)
+        const finalPresentCount = Number(data.present || 0);
+        try {
+          await updateDoc(docRef, {
+            closed: true,
+            finalizedAt: serverTimestamp(),
+            finalPresentCount: finalPresentCount,
+          });
+
+          // Désactiver UI côté client immédiatement
+          if (btnPrendre) btnPrendre.disabled = true;
+          // remplacer les boutons interactifs dans le tableau (sera aussi fait par updateTable)
+          const spans = tbody.querySelectorAll("span");
+          spans.forEach((s) => s.replaceWith(s.cloneNode(true)));
+          alert("La journée est terminée ! Les présences ont été finalisées.");
+        } catch (err) {
+          console.error("Erreur terminerJournee:", err);
+          alert("Erreur lors de la finalisation.");
+        }
+      }
+
+      // ---------------- ACTIVITES (reste identique mais on garde onSnapshot) ----------------
+      openCalendarBtn.addEventListener("click", () => {
+        calendarWrapper.style.display =
+          calendarWrapper.style.display === "none" ? "block" : "none";
+      });
+
+      saveBtn.addEventListener("click", async () => {
+        const name = document.getElementById("activityName").value.trim();
+        const date = document.getElementById("activityDate").value;
+        const participants = Number(
+          document.getElementById("participants").value || 0
+        );
+        if (!name || !date || participants <= 0) {
+          alert("Remplis tous les champs correctement.");
+          return;
+        }
+        try {
+          if (currentEditId) {
+            await updateDoc(doc(db, "activites", currentEditId), {
+              nom: name,
+              date,
+              participants,
+            });
+            currentEditId = null;
+          } else {
+            await addDoc(collection(db, "activites"), {
+              nom: name,
+              date,
+              participants,
+              createdAt: serverTimestamp(),
+            });
+          }
+          document.getElementById("activityName").value = "";
+          document.getElementById("activityDate").value = "";
+          document.getElementById("participants").value = "";
+          calendarWrapper.style.display = "none";
+        } catch (err) {
+          console.error("Erreur ajout/modification activité:", err);
+          alert("Erreur lors de l'enregistrement.");
+        }
+      });
+
+      // ---------------- AFFICHAGE ACTIVITES (onSnapshot) ----------------
+      const q = query(collection(db, "activites"), orderBy("date", "asc"));
+      onSnapshot(q, (snapshot) => {
+        const today = new Date().toISOString().split("T")[0];
+        const moisActuel = today.slice(0, 7);
+        let prochaines = [],
+          recentes = [],
+          activitesMois = 0;
+        snapshot.forEach((docu) => {
+          const data = docu.data();
+          if (!data || !data.date) return;
+          if (data.date.slice(0, 7) === moisActuel) activitesMois++;
+          if (data.date > today) prochaines.push({ id: docu.id, ...data });
+          else recentes.push({ id: docu.id, ...data });
+        });
+        afficherProchaines(prochaines);
+        afficherRecentes(recentes);
+        if (activityCountEl)
+          activityCountEl.textContent = String(activitesMois);
+      });
+
+      function afficherProchaines(list) {
+        prochainesList.innerHTML = "";
+        if (list.length === 0) {
+          prochainesList.innerHTML = "<p>Aucune activité prévue.</p>";
+          return;
+        }
+        list.forEach((act) => {
+          const div = document.createElement("div");
+          div.className = "prochaine p-2 mb-2";
+          div.innerHTML = `<p><strong>${escapeHtml(act.nom)}</strong></p>
+								 <p>Date: ${act.date}</p>
+								 <p>Participants: ${act.participants}</p>
+								 <button data-id="${
+                   act.id
+                 }" class="btn btn-sm btn-outline-secondary edit-btn">Modifier</button>`;
+          prochainesList.appendChild(div);
+        });
+        document.querySelectorAll(".edit-btn").forEach((btn) => {
+          btn.addEventListener("click", async (e) => {
+            const id = e.currentTarget.dataset.id;
+            currentEditId = id;
+            const docRef = doc(db, "activites", id);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              document.getElementById("activityName").value = data.nom;
+              document.getElementById("activityDate").value = data.date;
+              document.getElementById("participants").value = data.participants;
+              calendarWrapper.style.display = "block";
+            }
+          });
+        });
+      }
+
+      function afficherRecentes(list) {
+        recentContainer.innerHTML =
+          "<h4 class='text-center'>Activité récentes</h4>";
+        if (list.length === 0) {
+          recentContainer.innerHTML += "<p>Aucune activité récente.</p>";
+          return;
+        }
+        list.sort((a, b) => b.date.localeCompare(a.date));
+        list.forEach((act) => {
+          const div = document.createElement("div");
+          div.className = "activite mb-1 d-flex justify-content-between p-2";
+          div.innerHTML = `<div class="gch"><p class="activity-name">${escapeHtml(
+            act.nom
+          )}</p>
+								 <p class="activity-date">${act.date}</p></div>
+								 <div class="drt"><span class="badge badge-success">terminé</span>
+								 <p style="color:brown">${act.participants} participants</p></div>`;
+          recentContainer.appendChild(div);
+        });
+      }
+
+      // ---------------- PRESENCES EN TEMPS REEL (collection snapshot) ----------------
+      // onSnapshot sur toute la collection 'presences' pour garder presenceData à jour pour chaque jour (barres, global, etc.)
+      const presencesCol = collection(db, "presences");
+      onSnapshot(
+        presencesCol,
+        (snapshot) => {
+          snapshot.forEach((d) => {
+            presenceData[d.id] = d.data();
+          });
+          // Met à jour l'affichage global et le tableau du jour
+          updateTaux();
+          updateTable();
+        },
+        (err) => {
+          console.error("Erreur onSnapshot presences:", err);
+        }
+      );
+
+      // ---------------- ONLOAD ----------------
+      document.addEventListener("DOMContentLoaded", () => {
+        if (btnPrendre) btnPrendre.disabled = true;
+        loadJeunes()
+          .then(() => {
+            if (btnPrendre) btnPrendre.disabled = false;
+          })
+          .catch((err) => console.error(err));
+
+        if (btnPrendre) btnPrendre.addEventListener("click", prendrePresence);
+        if (btnReset) btnReset.addEventListener("click", onResetClick);
+        if (btnTerminer) btnTerminer.addEventListener("click", onTerminerClick);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.wrapper-info{
+    border: 1px solid rgb(189, 221, 200) ;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+}
+.wrapper-date{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+
+.mybadge{
+    background-color: rgb(136, 219, 2);
+    padding: 1px 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
+.glass-nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.logo {
+  height: 60px;
+}
+.main{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background: linear-gradient(to left, rgba(255, 0, 0, 0.069), rgba(0, 128, 0, 0.200), rgba(255, 0, 0, 0.069));
+}
+.hidden {
+    display: none !important;
+}
+nav{
+    font-family: "Poppins", sans-serif;
+
+}
+.navigation-info{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0;
+    align-items: center;
+}
+.navigation-info>a{
+    text-decoration: none;
+}
+
+.activeNow{
+    background-color: rgb(206, 200, 253);
+    padding: 0 20px;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+.path{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.some{
+    display: flex;
+
+}
+/* ----- CARTE D’ACTUALITÉ ----- */
+/* ----- CARTE ----- */
+.actu-card {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.actu-image {
+    flex: 1.2;
+}
+
+.actu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.actu-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.actu-meta {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.actu-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.actu-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.actu-footer {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+}
+
+/* ❤️ Bouton cœur */
+/* ----- BOUTON COEUR FUTURISTE ----- */
+
+.futuristic-heart {
+    position: relative;
+    padding: 12px 20px;
+    border-radius: 50%;
+    background: rgba(40, 40, 60, 0.6);
+    border: 2px solid rgba(120, 60, 255, 0.4);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 0 12px rgba(120, 60, 255, 0.5),
+                inset 0 0 12px rgba(120, 60, 255, 0.5);
+}
+
+.futuristic-heart:hover:not(.locked) {
+    transform: scale(1.15);
+    box-shadow: 0 0 18px rgba(150, 70, 255, 0.8),
+                inset 0 0 18px rgba(150, 70, 255, 0.8);
+}
+
+/* Icône du cœur */
+.heart-icon {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #ff3df5, 0 0 25px #ff3df5;
+}
+
+/* Lorsqu’il est cliqué : état verrouillé */
+.futuristic-heart.locked {
+    background: rgba(255, 0, 120, 0.7);
+    border-color: rgba(255, 0, 120, 0.9);
+    box-shadow: 0 0 25px rgba(255, 0, 120, 1),
+                inset 0 0 25px rgba(255, 0, 120, 1);
+    transform: scale(1.25);
+}
+
+/* Animation coeur pulse */
+.futuristic-heart.locked .heart-icon {
+    animation: pulseHeart 0.5s ease forwards;
+}
+
+@keyframes pulseHeart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.6); }
+    100% { transform: scale(1.2); }
+}
+
+
+/* Commentaire */
+.comment-section {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.comment-section input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.comments-list {
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.comment-item {
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .actu-card {
+        flex-direction: column;
+    }
+    .actu-content {
+        padding: 20px;
+    }
+}

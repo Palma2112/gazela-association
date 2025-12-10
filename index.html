@@ -1,0 +1,545 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Association Gazela</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css" />
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playwrite+DE+SAS:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="position: fixed; top: 0; z-index: 99; width: 100%"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="../../img/gazela-logo.png"
+            alt=""
+            style="height: 100px; width: auto; padding: 10px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end w-100"
+          >
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="../../index.html"
+                aria-current="page"
+                >Accueil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/bord.html">Tableau de bord</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Jeunes
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="path/to/jeune/jeune.html"
+                    >Programme 1</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/actualite.html">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/resources.html">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/benevolat.html">Bénevolat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main style="margin-top: 120px">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/hero-gazela.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="img/parents-kids-spending-time-together.png"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="img/diverse-teenagers-practicing-health-wellness-activities-themselves-their-community.png"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="wrapper-landing">
+        <h1 class="text-center">
+          Bienvenue sur le site officiel de l'Association
+          <span
+            style="
+              color: green;
+              font-weight: bold;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+            >Gazela</span
+          >
+          <br />
+          <button type="button" class="btn btn-info">Devenir benevole</button>
+        </h1>
+      </div>
+    </main>
+    <section class="text-center mt-5 w-100">
+      <h1 style="font-family: 'Alfa Slab One', serif">Nos missions</h1>
+      <p style="color: rgb(138, 74, 74); padding: 0 10px">
+        Nous œuvrons chaque jour pour créer un environnement <br />
+        propice au développement des enfants et jeunes de Madagascar, en leur
+        offrant accompagnement, formation et opportunités.
+      </p>
+      <div class="row container mx-auto g-4">
+        <div
+          class="box col-xl-3 col-lg-6 col-md-6 col-sm-12"
+          style="border: 1px solid rgb(186, 186, 186); border-radius: 10px"
+        >
+          <img src="img/sac-decole.png" alt="mission 1" style="height: 80px" />
+          <h3>Accompagnement scolaire</h3>
+          <p>
+            Offrir un soutien éducatif personnalisé pour aider les jeunes à
+            réussir académiquement et à développer leurs compétences.
+          </p>
+        </div>
+        <div
+          class="box col-xl-3 col-lg-6 col-md-6 col-sm-12"
+          style="border: 1px solid rgb(186, 186, 186); border-radius: 10px"
+        >
+          <img
+            src="img/self-development.png"
+            alt="mission 1"
+            style="height: 80px"
+          />
+          <h3>Developpement</h3>
+          <p>
+            Offrir des opportunités de croissance durable pour aider les jeunes
+            à évoluer professionnellement et à renforcer leurs capacités.
+          </p>
+        </div>
+        <div
+          class="box col-xl-3 col-lg-6 col-md-6 col-sm-12"
+          style="border: 1px solid rgb(186, 186, 186); border-radius: 10px"
+        >
+          <img
+            src="img/developpement-de-competence.png"
+            alt="mission 1"
+            style="height: 80px"
+          />
+          <h3>Impact</h3>
+          <p>
+            Favoriser un changement positif durable pour permettre aux jeunes
+            malgaches de s’épanouir pleinement dans leur société.
+          </p>
+        </div>
+        <div
+          class="box col-xl-3 col-lg-6 col-md-6 col-sm-12"
+          style="border: 1px solid rgb(186, 186, 186); border-radius: 10px"
+        >
+          <img
+            src="img/environnement.png"
+            alt="mission 1"
+            style="height: 80px"
+          />
+          <h3>Communauté</h3>
+          <p>
+            Créer un environnement social inclusif pour encourager les jeunes à
+            collaborer activement et à soutenir leurs pairs.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section
+      class="w-100 row text-center mt-5 p-5 g-4"
+      style="background-color: rgb(227, 227, 227)"
+    >
+      <div class="stat col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <h3 style="color: rgb(255, 85, 0); font-size: 35px">124</h3>
+        <p>Jeunes accompagnés</p>
+      </div>
+      <div class="stat col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <h3 style="color: rgb(88, 147, 0); font-size: 35px">27</h3>
+        <p>Activité par mois</p>
+      </div>
+      <div class="stat col-xl-4 col-lg-4 col-md-4 col-sm-12">
+        <h3 style="color: orange; font-size: 35px">90%</h3>
+        <p>Taux de satisfaction</p>
+      </div>
+    </section>
+    <section class="text-center mt-5">
+      <h1 style="font-family: 'Alfa Slab One', serif">
+        Rejoignez notre communauté
+      </h1>
+      <p style="color: rgb(138, 74, 74); padding: 0 10px">
+        Que vous soyez bénévole, partenaire ou simplement intéressé par notre
+        mission, nous serions ravis de vous accueillir.
+        <br />
+        <button type="button" class="btn btn-light mt-3">
+          En savoir plus
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-right ml-4"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+            />
+          </svg>
+        </button>
+      </p>
+    </section>
+    <footer>
+      <div class="row" style="background-color: rgb(227, 227, 227)">
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <img
+            src="img/gazela-logo.png"
+            alt="logo"
+            style="height: 80px; width: auto"
+          />
+          <p>
+            Promotion et développement de l'environnement social des enfants et
+            jeunes à Madagascar
+          </p>
+        </div>
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <h4>Contact</h4>
+          <p>
+            Email: contact@gazela.mg <br />
+            Tél: +261 XX XX XXX XX
+          </p>
+        </div>
+        <div class="foot-text p-3 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <h4>Suivez-nous</h4>
+          <p>Facebook • Instagram • LinkedIn</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Association Gazela</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css" />
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js" defer></script>
+
+    <!-- NEW DESIGN CSS -->
+    <link rel="stylesheet" href="style-modern.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR GLASSMORPHISM -->
+    <nav class="navbar navbar-expand-lg navbar-light glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+          <img src="../../img/gazela-logo.png" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/bord.html">Tableau de bord</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                >Jeunes</a
+              >
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Programme 1</a></li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/actualite.html">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/resources.html">Ressources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="path/to/benevolat.html">Bénévolat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="overlay"></div>
+      <div class="hero-content text-center">
+        <h1 class="fw-bold">
+          Ensemble, construisons l'avenir des jeunes de Madagascar
+        </h1>
+        <p class="lead">
+          Accompagnement, développement, communauté & impact durable.
+        </p>
+
+        <button
+          class="btn btn-lg btn-success shadow-lg mt-3"
+          onclick="window.location.href='path/to/benevolat.html'"
+        >
+          Devenir bénévole
+        </button>
+      </div>
+    </header>
+
+    <!-- MISSIONS SECTION -->
+    <section class="container missions-section">
+      <h2 class="section-title">Nos missions</h2>
+      <p class="section-subtitle">
+        Gazela œuvre pour offrir un environnement éducatif, social et
+        professionnel durable pour la jeunesse malgache.
+      </p>
+
+      <div class="row g-4 mt-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="mission-card">
+            <img src="img/sac-decole.png" class="mission-icon" />
+            <h4>Accompagnement scolaire</h4>
+            <p>
+              Soutien éducatif personnalisé pour développer le potentiel de
+              chaque jeune.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="mission-card">
+            <img src="img/self-development.png" class="mission-icon" />
+            <h4>Développement personnel</h4>
+            <p>
+              Aider les jeunes à construire leur avenir avec confiance et
+              compétences.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="mission-card">
+            <img
+              src="img/developpement-de-competence.png"
+              class="mission-icon"
+            />
+            <h4>Impact</h4>
+            <p>Construire des projets à fort impact social et durable.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="mission-card">
+            <img src="img/environnement.png" class="mission-icon" />
+            <h4>Communauté</h4>
+            <p>Créer un environnement inclusif et collaboratif pour tous.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section" id="statsSection">
+      <div class="container text-center">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="stat-box">
+              <h3 class="counter" data-value="124">0</h3>
+              <p>Jeunes accompagnés</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="stat-box">
+              <h3 class="counter" data-value="27">0</h3>
+              <p>Activités par mois</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="stat-box">
+              <h3 class="counter" data-value="90" data-suffix="%">0%</h3>
+              <p>Taux de satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN SECTION -->
+    <section class="join-section text-center">
+      <h2 class="section-title">Rejoignez notre communauté</h2>
+      <p class="section-subtitle">
+        Bénévoles, partenaires, jeunes : ensemble, créons l’impact positif.
+      </p>
+
+      <button class="btn btn-outline-dark mt-3">En savoir plus →</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer mt-5">
+      <div class="container">
+        <div class="row text-center text-lg-start">
+          <div class="col-lg-4 footer-box">
+            <img src="img/gazela-logo.png" class="footer-logo" />
+            <p>
+              Développement social, éducatif & professionnel des jeunes à
+              Madagascar.
+            </p>
+          </div>
+
+          <div class="col-lg-4 footer-box">
+            <h5>Contact</h5>
+            <p>Email : contact@gazela.mg<br />Tél : +261 XX XX XXX XX</p>
+          </div>
+
+          <div class="col-lg-4 footer-box">
+            <h5>Suivez-nous</h5>
+            <p>Facebook • Instagram • LinkedIn</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const counters = document.querySelectorAll(".counter");
+      let statsStarted = false;
+
+      function animateCounter(counter) {
+        const target = +counter.getAttribute("data-value");
+        const suffix = counter.getAttribute("data-suffix") || "";
+        const duration = 1000;
+        const frameRate = 60;
+        const totalFrames = Math.round((duration / 1000) * frameRate);
+        let currentFrame = 0;
+
+        const counterAnim = setInterval(() => {
+          currentFrame++;
+          const progress = currentFrame / totalFrames;
+          const value = Math.floor(progress * target);
+
+          counter.textContent = value + suffix;
+
+          if (currentFrame === totalFrames) {
+            clearInterval(counterAnim);
+            counter.textContent = target + suffix;
+          }
+        }, duration / totalFrames);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting && !statsStarted) {
+          counters.forEach((counter) => animateCounter(counter));
+          statsStarted = true;
+        }
+      });
+
+      observer.observe(document.querySelector("#statsSection"));
+    </script>
+  </body>
+</html>

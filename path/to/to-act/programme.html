@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../actualite.css" />
+    <link
+      rel="stylesheet"
+      href="../../../bootstrap-5.3.8-dist/css/bootstrap.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playwrite+DE+SAS:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../../../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <title>Document</title>
+  </head>
+  <body style="background-color: whitesmoke">
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="position: fixed; top: 0; z-index: 99; width: 100%"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand p-3" href="../../index.html"
+          ><img
+            src="../../../img/gazela-logo.png"
+            alt="logo"
+            style="height: 80px; width: auto"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 d-flex w-100 justify-content-end"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="../../../index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../bord.html">Tableau de bord</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Jeunes
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="jeune/jeune.html"
+                    >Programme 1</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page"
+                >Actualités</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../resources.html">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../benevolat.html">Bénévolat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main style="margin-top: 120px" class="text-center container-fluid main">
+      <h1
+        class="mt-5"
+        style="
+          font-size: 55px;
+          font-weight: bolder;
+          font-family: Arial, Helvetica, sans-serif;
+          color: rgb(35, 23, 23);
+        "
+      >
+        Actualités & Programmes
+      </h1>
+      <p
+        class="mb-5"
+        style="
+          color: rgb(75, 59, 59);
+          font-size: 20px;
+          font-family: Arial, Helvetica, sans-serif;
+        "
+      >
+        Restez informé des dernières nouvelles, programmes et opportunités de
+        <br />
+        l'association Gazela
+      </p>
+    </main>
+    <nav class="container navigation-info">
+      <a href="../actualite.html">📰 Actualités</a>
+      <a href="programme.html" class="activeNow">📆 Programme</a>
+      <a href="info.html">💡Infos Jeunes</a>
+    </nav>
+    <section class="container mt-5">
+      <div id="react-root-programme"></div>
+
+      <!-- React + ReactDOM (UMD) -->
+      <script
+        src="https://unpkg.com/react@18/umd/react.development.js"
+        crossorigin
+      ></script>
+      <script
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        crossorigin
+      ></script>
+      <!-- Babel standalone (JSX) -->
+      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      <!-- Firebase compat -->
+      <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+      <script type="text/babel">
+        (function () {
+          var useState = React.useState;
+          var useEffect = React.useEffect;
+
+          // --- Config Firebase (garde la même que partout ailleurs)
+          var firebaseConfig = {
+            apiKey: "AIzaSyDBMXFG1hRdZgottPlkTUTT0KacyXD70TA",
+            authDomain: "gazela-31196.firebaseapp.com",
+            projectId: "gazela-31196",
+            storageBucket: "gazela-31196.firebasestorage.app",
+            messagingSenderId: "684160987114",
+            appId: "1:684160987114:web:36bc996595b5bdc4a60c93",
+          };
+
+          if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+          }
+          var db = firebase.firestore();
+
+          // --- Card simple pour afficher un programme
+          function ProgrammeCard(props) {
+            var p = props.data;
+            return (
+              <div className="card mb-3 shadow-sm">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h5 className="card-title mb-1">
+                        {p.titre || "Sans titre"}
+                      </h5>
+                      <small className="text-muted">
+                        {p.date || "Date non renseignée"} —{" "}
+                        {p.lieu || "Lieu non renseigné"}
+                      </small>
+                    </div>
+                    <div>
+                      <button
+                        className="btn btn-sm btn-outline-primary me-2"
+                        onClick={props.onEdit}
+                      >
+                        Modifier
+                      </button>
+                      <button
+                        className="btn btn-sm btn-outline-danger"
+                        onClick={props.onDelete}
+                      >
+                        Supprimer
+                      </button>
+                    </div>
+                  </div>
+                  <p className="mt-3 mb-0">{p.description || ""}</p>
+                  <div className="text-end mt-2 text-muted">
+                    <small>
+                      {p.participants ? p.participants + " participants" : ""}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          // --- Composant principal
+          function App() {
+            var state = useState([]);
+            var programmes = state[0];
+            var setProgrammes = state[1];
+
+            var s2 = useState(false);
+            var showForm = s2[0];
+            var setShowForm = s2[1];
+
+            var s3 = useState({
+              titre: "",
+              date: "",
+              lieu: "",
+              participants: "",
+              statut: "en cours",
+              description: "",
+            });
+            var form = s3[0];
+            var setForm = s3[1];
+
+            var s4 = useState(null);
+            var editID = s4[0];
+            var setEditID = s4[1];
+
+            // Charger les programmes en temps réel
+            useEffect(function () {
+              var unsub = db.collection("programmes").onSnapshot(
+                function (snap) {
+                  var data = snap.docs.map(function (d) {
+                    var dd = d.data() || {};
+                    return {
+                      id: d.id,
+                      titre: dd.titre || "",
+                      date: dd.date || "",
+                      lieu: dd.lieu || "",
+                      participants: dd.participants || "",
+                      statut: dd.statut || "",
+                      description: dd.description || "",
+                    };
+                  });
+                  setProgrammes(data);
+                },
+                function (err) {
+                  console.error("Erreur snapshot programmes:", err);
+                  alert("Erreur de lecture des programmes (voir console).");
+                }
+              );
+              return function () {
+                unsub();
+              };
+            }, []);
+
+            function toggleForm() {
+              // si on ouvre le formulaire et qu'on était en édition, réinitialiser l'édition
+              if (showForm === false && editID) {
+                setEditID(null);
+                setForm({
+                  titre: "",
+                  date: "",
+                  lieu: "",
+                  participants: "",
+                  statut: "en cours",
+                  description: "",
+                });
+              }
+              setShowForm(!showForm);
+            }
+
+            function updateField(e) {
+              var name = e.target.name;
+              var val = e.target.value;
+              setForm(
+                Object.assign(
+                  {},
+                  form,
+                  (function () {
+                    var o = {};
+                    o[name] = val;
+                    return o;
+                  })()
+                )
+              );
+            }
+
+            function handleSubmit(e) {
+              e.preventDefault();
+              if (!form.titre || !form.titre.trim()) {
+                alert("Le titre est requis.");
+                return;
+              }
+
+              var payload = {
+                titre: form.titre,
+                date: form.date || new Date().toISOString().split("T")[0],
+                lieu: form.lieu || "",
+                participants: form.participants || "",
+                statut: form.statut || "en cours",
+                description: form.description || "",
+              };
+
+              if (editID) {
+                // mise à jour
+                db.collection("programmes")
+                  .doc(editID)
+                  .update(payload)
+                  .then(function () {
+                    setEditID(null);
+                    setForm({
+                      titre: "",
+                      date: "",
+                      lieu: "",
+                      participants: "",
+                      statut: "en cours",
+                      description: "",
+                    });
+                    setShowForm(false);
+                  })
+                  .catch(function (err) {
+                    console.error("Erreur update:", err);
+                    alert("Impossible de mettre à jour (permissions?).");
+                  });
+              } else {
+                // création
+                db.collection("programmes")
+                  .add(payload)
+                  .then(function () {
+                    setForm({
+                      titre: "",
+                      date: "",
+                      lieu: "",
+                      participants: "",
+                      statut: "en cours",
+                      description: "",
+                    });
+                    setShowForm(false);
+                  })
+                  .catch(function (err) {
+                    console.error("Erreur add:", err);
+                    alert("Impossible de publier (permissions?).");
+                  });
+              }
+            }
+
+            function handleEdit(id) {
+              // charger le doc et ouvrir le formulaire en mode édition
+              db.collection("programmes")
+                .doc(id)
+                .get()
+                .then(function (docSnap) {
+                  if (!docSnap.exists) {
+                    alert("Programme introuvable.");
+                    return;
+                  }
+                  var d = docSnap.data() || {};
+                  setForm({
+                    titre: d.titre || "",
+                    date: d.date || "",
+                    lieu: d.lieu || "",
+                    participants: d.participants || "",
+                    statut: d.statut || "en cours",
+                    description: d.description || "",
+                  });
+                  setEditID(id);
+                  setShowForm(true);
+                  // scroll to form
+                  setTimeout(function () {
+                    var el = document.querySelector(
+                      "#react-root-programme .card"
+                    );
+                    if (el)
+                      el.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                      });
+                  }, 50);
+                })
+                .catch(function (err) {
+                  console.error("Erreur lecture doc pour édition:", err);
+                  alert("Impossible de charger le programme pour édition.");
+                });
+            }
+
+            function handleDelete(id) {
+              if (!confirm("Supprimer ce programme ?")) return;
+              db.collection("programmes")
+                .doc(id)
+                .delete()
+                .then(function () {
+                  // succès — on laisse onSnapshot rafraîchir l'UI
+                })
+                .catch(function (err) {
+                  console.error("Erreur suppression:", err);
+                  alert("Impossible de supprimer (permissions?).");
+                });
+            }
+
+            return React.createElement(
+              "div",
+              null,
+              React.createElement(
+                "button",
+                { className: "btn btn-success mb-3", onClick: toggleForm },
+                showForm ? "Fermer le formulaire" : "+ Ajouter un programme"
+              ),
+
+              showForm &&
+                React.createElement(
+                  "form",
+                  {
+                    className: "card p-3 mb-4 shadow-sm",
+                    onSubmit: handleSubmit,
+                  },
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Titre"
+                    ),
+                    React.createElement("input", {
+                      name: "titre",
+                      className: "form-control",
+                      value: form.titre,
+                      onChange: updateField,
+                      required: true,
+                    })
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Date"
+                    ),
+                    React.createElement("input", {
+                      type: "date",
+                      name: "date",
+                      className: "form-control",
+                      value: form.date,
+                      onChange: updateField,
+                    })
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Lieu"
+                    ),
+                    React.createElement("input", {
+                      name: "lieu",
+                      className: "form-control",
+                      value: form.lieu,
+                      onChange: updateField,
+                    })
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Nombre de participants"
+                    ),
+                    React.createElement("input", {
+                      type: "number",
+                      name: "participants",
+                      className: "form-control",
+                      value: form.participants,
+                      onChange: updateField,
+                    })
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Statut"
+                    ),
+                    React.createElement(
+                      "select",
+                      {
+                        name: "statut",
+                        className: "form-select",
+                        value: form.statut,
+                        onChange: updateField,
+                      },
+                      React.createElement(
+                        "option",
+                        { value: "en cours" },
+                        "En cours"
+                      ),
+                      React.createElement(
+                        "option",
+                        { value: "terminé" },
+                        "Terminé"
+                      ),
+                      React.createElement(
+                        "option",
+                        { value: "annulé" },
+                        "Annulé"
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "mb-3" },
+                    React.createElement(
+                      "label",
+                      { className: "form-label" },
+                      "Description"
+                    ),
+                    React.createElement("textarea", {
+                      name: "description",
+                      className: "form-control",
+                      rows: 3,
+                      value: form.description,
+                      onChange: updateField,
+                    })
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "d-flex gap-2" },
+                    React.createElement(
+                      "button",
+                      { type: "submit", className: "btn btn-primary" },
+                      editID ? "Mettre à jour" : "Publier"
+                    ),
+                    React.createElement(
+                      "button",
+                      {
+                        type: "button",
+                        className: "btn btn-secondary",
+                        onClick: function () {
+                          setShowForm(false);
+                          setEditID(null);
+                          setForm({
+                            titre: "",
+                            date: "",
+                            lieu: "",
+                            participants: "",
+                            statut: "en cours",
+                            description: "",
+                          });
+                        },
+                      },
+                      "Annuler"
+                    )
+                  )
+                ),
+
+              React.createElement(
+                "div",
+                { className: "row" },
+                programmes.length === 0
+                  ? React.createElement("p", null, "Aucun programme publié.")
+                  : programmes.map(function (p) {
+                      return React.createElement(
+                        "div",
+                        { key: p.id, className: "col-md-6 col-lg-4 mb-3" },
+                        React.createElement(ProgrammeCard, {
+                          data: p,
+                          onEdit: function () {
+                            handleEdit(p.id);
+                          },
+                          onDelete: function () {
+                            handleDelete(p.id);
+                          },
+                        })
+                      );
+                    })
+              )
+            );
+          }
+
+          // Monter l'app
+          ReactDOM.render(
+            React.createElement(App),
+            document.getElementById("react-root-programme")
+          );
+        })();
+      </script>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portail Bénévolat</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-muted {
+        background-color: #f8f9fa;
+      }
+      .text-muted-foreground {
+        color: #6c757d;
+      }
+      .text-primary {
+        color: #0d6efd;
+      }
+      .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+      }
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+      }
+      .rounded-lg {
+        border-radius: 0.5rem;
+      }
+      .space-y-2 > * + * {
+        margin-top: 0.5rem;
+      }
+      .space-y-3 > * + * {
+        margin-top: 0.75rem;
+      }
+      .space-y-4 > * + * {
+        margin-top: 1rem;
+      }
+      .mb-8 {
+        margin-bottom: 2rem;
+      }
+      .gap-6 {
+        gap: 1.5rem;
+      }
+      .glass-nav {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .logo {
+        height: 60px;
+      }
+      nav {
+        font-family: "Poppins", sans-serif;
+      }
+      .navbar {
+        box-shadow: 0 0 5px rgb(70, 113, 84);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="../../bootstrap-5.3.8-dist/css/bootstrap.css"
+    />
+    <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+          <img src="../../img/gazela-logo.png" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bord.html">Tableau de bord</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                >Jeunes</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="jeune/jeune.html"
+                    >Programme 1</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Programme 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="actualite.html">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Ressources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="benevolat.html">Bénévolat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container" style="margin-top: 120px">
+      <div class="mb-8">
+        <h1 class="text-3xl fw-bold mb-2">Portail Bénévolat & RH</h1>
+        <p class="text-muted-foreground">
+          Rejoignez notre équipe et participez à notre mission
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-lg-2 g-4">
+        <!-- Formulaire candidature -->
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Postuler comme bénévole</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="mb-3">
+                  <label for="nom" class="form-label">Nom complet</label>
+                  <input
+                    type="text"
+                    id="nom"
+                    class="form-control"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tel" class="form-label">Téléphone</label>
+                  <input
+                    type="tel"
+                    id="tel"
+                    class="form-control"
+                    placeholder="+261 XX XX XXX XX"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="motivation" class="form-label">Motivation</label>
+                  <textarea
+                    id="motivation"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Pourquoi souhaitez-vous rejoindre Gazela ?"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="cv" class="form-label">CV (optionnel)</label>
+                  <div class="d-flex gap-2">
+                    <input
+                      type="file"
+                      id="cv"
+                      class="form-control flex-grow-1"
+                    />
+                    <button type="button" class="btn btn-outline-secondary">
+                      📤
+                    </button>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  📨 Envoyer ma candidature
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Informations complémentaires -->
+        <div class="col d-flex flex-column gap-3">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Pourquoi nous rejoindre ?</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled space-y-3">
+                <li class="d-flex align-items-start gap-3">
+                  <span class="text-muted-foreground"
+                    >✅Contribuez au développement des jeunes malgaches</span
+                  >
+                </li>
+                <li class="d-flex align-items-start gap-3">
+                  <span class="text-muted-foreground"
+                    >✅Développez vos compétences et votre expérience</span
+                  >
+                </li>
+                <li class="d-flex align-items-start gap-3">
+                  <span class="text-muted-foreground"
+                    >✅Rejoignez une équipe passionnée et engagée</span
+                  >
+                </li>
+                <li class="d-flex align-items-start gap-3">
+                  <span class="text-muted-foreground"
+                    >✅Faites la différence dans votre communauté</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Profils recherchés</h5>
+            </div>
+            <div class="card-body space-y-2">
+              <div class="p-3 bg-muted rounded-lg">
+                <p class="fw-medium mb-1">Tuteurs académiques</p>
+                <p class="text-sm text-muted-foreground mb-0">
+                  Aide aux devoirs et soutien scolaire
+                </p>
+              </div>
+              <div class="p-3 bg-muted rounded-lg">
+                <p class="fw-medium mb-1">Animateurs sportifs</p>
+                <p class="text-sm text-muted-foreground mb-0">
+                  Organisation d'activités sportives
+                </p>
+              </div>
+              <div class="p-3 bg-muted rounded-lg">
+                <p class="fw-medium mb-1">Formateurs professionnels</p>
+                <p class="text-sm text-muted-foreground mb-0">
+                  Partage de compétences techniques
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5 text-center">
+      &copy; 2025 Gazela - Tous droits réservés
+    </footer>
+
+    <!-- Ajouter avant la fermeture de </body> -->
+
+    <!-- Firebase App -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <!-- Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+    <script>
+      // TODO: Remplace par ta config Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBMXFG1hRdZgottPlkTUTT0KacyXD70TA",
+        authDomain: "gazela-31196.firebaseapp.com",
+        databaseURL: "https://gazela-31196-default-rtdb.firebaseio.com",
+        projectId: "gazela-31196",
+        storageBucket: "gazela-31196.appspot.com",
+        messagingSenderId: "684160987114",
+        appId: "1:684160987114:web:36bc996595b5bdc4a60c93",
+        measurementId: "G-1S46PN787R",
+      };
+
+      // Initialiser Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      const form = document.querySelector("form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nom = document.getElementById("nom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const tel = document.getElementById("tel").value.trim();
+        const motivation = document.getElementById("motivation").value.trim();
+        const cvFile = document.getElementById("cv").files[0];
+
+        if (!nom || !email || !tel || !motivation) {
+          alert("Veuillez remplir tous les champs obligatoires !");
+          return;
+        }
+
+        try {
+          let cvUrl = "";
+          if (cvFile) {
+            const storageRef = storage.ref().child(`cvs/${cvFile.name}`);
+            await storageRef.put(cvFile);
+            cvUrl = await storageRef.getDownloadURL();
+          }
+
+          await db.collection("benevoles").add({
+            nom,
+            email,
+            tel,
+            motivation,
+            cv: cvUrl,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+
+          alert("Votre candidature a été envoyée avec succès !");
+          form.reset();
+        } catch (error) {
+          console.error(error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+        }
+      });
+    </script>
+  </body>
+</html>

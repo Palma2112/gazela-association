@@ -1,0 +1,66 @@
+
+body{
+    scrollbar-width: thin;
+}
+p*{
+    font-family: 'Century Gothic',sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{  
+    scrollbar-width: none;
+}
+
+
+main{
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(5px) brightness(1.2); 
+    position: relative;
+    background: linear-gradient(to left, rgba(255, 0, 0, 0.069), rgba(0, 202, 0, 0.178), rgba(255, 0, 0, 0.069),rgba(0, 128, 0, 0.100), rgba(255, 0, 0, 0.069));
+
+}
+
+
+main>div>h1{
+    font-family: 'Century Gothic',sans-serif;
+    text-align: center;
+    margin-top: 109px;
+}
+
+.carousel img{
+    border-radius: 0% 37% 28% 0% / 0% 0% 75% 0%  ;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 800ms;
+}
+.box>p{
+    font-family: 'Century Gothic',sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+.box:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.stat>h3{
+    font-weight: bolder;
+}
+@media (min-width:751px){
+    .carousel{
+        width: 80%;
+        
+        
+    }
+}
+@media (max-width:750px){
+    .carousel{
+        width: 100%;
+    }
+
+    .wrapper-landing{
+        display: none;
+    }
+}
